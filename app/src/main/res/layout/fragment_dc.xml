@@ -1,0 +1,204 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_height="match_parent"
+    tools:context="io.github.gitwebx.hubiitism.dc">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TabHost
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tabhost">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+            <TabWidget
+                android:isScrollContainer="true"
+                android:elevation="4dp"
+                android:scrollbarAlwaysDrawHorizontalTrack="true"
+                android:scrollIndicators="left"
+                android:background="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@android:id/tabs"></TabWidget>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@android:id/tabcontent">
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/analo1g"
+        android:layout_marginBottom="10dp">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_marginTop="10dp"
+            android:elevation="10dp">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/learning"
+                android:layout_height="60dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold"
+                android:text="LIBRARY"
+                android:textColor="@color/album_title"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="WEEKDAYS:  9AM-1PM AND 1:30PM-10PM \nWEEKENDS:  9AM-1PM AND 3PM-10PM"
+                android:textSize="12sp"
+
+                android:layout_marginLeft="100dp"/>
+
+
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_marginTop="10dp"
+            android:elevation="10dp">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/medical"
+                android:layout_height="60dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold"
+                android:text="HEALTH CENTRE"
+                android:textColor="@color/album_title"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:textSize="12sp"
+                android:text="HEALTH CENTRE VAN: 0326-2235692\nMON-FRI: 10AM-1:30PM AND 6PM-8:30PM"
+
+                android:layout_marginLeft="100dp"/>
+
+
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:elevation="10dp">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/weight"
+                android:layout_height="60dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold"
+                android:text="GYM"
+                android:textColor="@color/album_title"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="BOYS: 6AM-8AM GIRLS: 5:30AM-6:30AM AND 6PM-7PM (MONDAY CLOSED)"
+                android:textSize="12sp"
+
+                android:layout_marginLeft="100dp"
+                android:id="@+id/textView4" />
+
+
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+</ScrollView>
+    <RelativeLayout
+        android:id="@+id/analog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="20dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ABOUT IIT(ISM)"
+                android:textAlignment="center"
+                android:textSize="35sp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/textView2"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="285dp"
+                android:text="The Indian Institute of Technology (Indian School of Mines), Dhanbad (abbreviated as IIT (ISM)) is a public engineering and research institution located in Dhanbad, India. It was formerly known as Indian School of Mines and was a Deemed University before it got converted into an Institute of National Importance under the Institutes of Technology Act, 1961.
+IIT (ISM) is located in the mineral-rich region of India, in the city of Dhanbad. \n \n It is the third oldest institute (after IIT Roorkee and IIT (BHU) Varanasi) which got converted into an IIT.It was established by British Indian Government on the lines of the Royal School of Mines - London, and was formally inaugurated on 9 December 1926 by Lord Irwin, the then Viceroy of India.[6] It started as an institution to impart mining education, and today, has grown into a technical institution with various academic departments. The institute featured among the top 100 universities in the world in the QS World University Rankings of 2016 by Subject in the fields of Mining and Mineral Engineering.IIT (ISM) admits its undergraduate students through Joint Entrance Examination (Advanced), previously IIT-JEE.
+The school was granted university status by the University Grants Commission under the University Grants Commission Act, 1956 in 1967. Later courses in Mining Machinery Engineering and Mineral Engineering were started in 1975 and 1976 respectively. It was among the few institutes to start courses in Industrial Engineering and Management (in 1977), to cater to the needs of industries like metallurgy, mining and manufacturing.\n\n\n                                                  "
+                android:id="@+id/textView3"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+android:layout_marginLeft="5dp"
+                android:id="@+id/imageView"
+android:src="@drawable/ismlogo"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+
+                android:layout_marginTop="75dp" />
+    </RelativeLayout>
+
+
+
+
+</FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
+
+</FrameLayout>
