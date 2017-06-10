@@ -8,13 +8,16 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.R.attr.defaultValue;
 
 /**
  * Created by Manan J on 26/01/17.
@@ -23,18 +26,38 @@ import java.util.List;
 public class ADCFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<News>> {
 
     private static final int NEWS_LOADER_ID = 1;
-    private NewsAdapter mAdapter;
+    private NewsRecyclerViewAdapter mAdapter;
     private View rootView;
-
+    int position;
+    RecyclerView mlist;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.activity_list, container, false);
 
-        ListView lv = (ListView) rootView.findViewById(R.id.list);
+
+
+
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            int myInt = bundle.getInt("key", defaultValue);
+            position=myInt;
+        }
+        mlist = (RecyclerView) rootView.findViewById(R.id.rv_numbers);
+
+        LinearLayoutManager la = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        mlist.setLayoutManager(la);
+        mlist.setHasFixedSize(true);
+        mAdapter = new NewsRecyclerViewAdapter(new ArrayList<News>());
+        mlist.setAdapter(mAdapter);
+
+
+
+
+       /* ListView lv = (ListView) rootView.findViewById(R.id.list);
         mAdapter = new NewsAdapter(getActivity(), new ArrayList<News>());
 
-        lv.setAdapter(mAdapter);
+        lv.setAdapter(mAdapter);*/
 
         ConnectivityManager connMgr = (ConnectivityManager)
                 getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -53,7 +76,7 @@ public class ADCFragment extends Fragment implements LoaderManager.LoaderCallbac
 
     @Override
     public android.support.v4.content.Loader<List<News>> onCreateLoader(int id, Bundle args) {
-        return new NewsLoader((ClubActivity) getActivity(), ValueStore.getURL(3));
+        return new NewsLoader((ClubActivity) getActivity(), ValueStore.getURL(position));
     }
 
     @Override
@@ -62,15 +85,19 @@ public class ADCFragment extends Fragment implements LoaderManager.LoaderCallbac
         loadingIndicator.setVisibility(View.GONE);
         mAdapter.clear();
 
+
         if (data != null && !data.isEmpty()) {
             mAdapter.addAll(data);
+            mlist.setAdapter(mAdapter);
+
         } else
             Snackbar.make(rootView, "No news right now", Snackbar.LENGTH_INDEFINITE).show();
     }
 
+
     @Override
     public void onLoaderReset(android.support.v4.content.Loader<List<News>> loader) {
-        mAdapter.clear();
+
     }
 }
 

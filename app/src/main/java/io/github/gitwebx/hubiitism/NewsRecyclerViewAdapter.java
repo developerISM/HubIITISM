@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static io.github.gitwebx.hubiitism.R.drawable.c;
@@ -21,12 +22,13 @@ import static io.github.gitwebx.hubiitism.R.drawable.c;
 
 public class NewsRecyclerViewAdapter extends RecyclerView.Adapter<NewsRecyclerViewAdapter.NumberViewHolder> {
 
-   List<News> listNews;
+   ArrayList<News> listNews;
 
-    public NewsRecyclerViewAdapter(Context context, List<News> objects) {
+    public NewsRecyclerViewAdapter( ArrayList<News> objects) {
 
         listNews=objects;
     }
+
 
 
 
@@ -96,5 +98,14 @@ public class NewsRecyclerViewAdapter extends RecyclerView.Adapter<NewsRecyclerVi
                 too.setText(wordlist.get(listIndex).getMiwokTranslation());*/
 
         }
+
+
+    }
+    public void clear() {
+        listNews = new ArrayList<>(25);
+    }
+
+    public void addAll(List<News> data) {
+        listNews.addAll(data);
     }
 }
