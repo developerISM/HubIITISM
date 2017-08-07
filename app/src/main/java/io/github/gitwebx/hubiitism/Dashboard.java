@@ -12,10 +12,10 @@ import android.widget.TabHost;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TabSetter extends Fragment {
+public class Dashboard extends Fragment {
 
 
-    public TabSetter() {
+    public Dashboard() {
         // Required empty public constructor
     }
 

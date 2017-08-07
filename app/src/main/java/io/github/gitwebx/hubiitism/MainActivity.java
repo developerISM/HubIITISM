@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        TabSetter contacts1 = new TabSetter();
+        Dashboard contacts1 = new Dashboard();
         FragmentManager manager=getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.content_main,contacts1).commit();
         setSupportActionBar(toolbar);
@@ -358,7 +358,7 @@ button1.setOnClickListener(new View.OnClickListener() {
             // Handle the camera action
         }
         if (id == R.id.Dashboard) {
-            TabSetter contacts1 = new TabSetter();
+            Dashboard contacts1 = new Dashboard();
             FragmentManager manager=getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.content_main,contacts1)
 
@@ -373,6 +373,9 @@ button1.setOnClickListener(new View.OnClickListener() {
 //
 //            ft.commit();
             // Handle the camera action
+        } else if (id == R.id.Club) {
+            Intent intent = new Intent(MainActivity.this, ClubsActivity.class);
+            startActivity(intent);
         } else if (id == R.id.Map) {
             Intent intent = new Intent(MainActivity.this, CampusMapActivity.class);
             startActivity(intent);
