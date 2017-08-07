@@ -10,17 +10,8 @@ import android.widget.ImageView;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
-public class Section extends Fragment {
+public class SectionFragment extends Fragment {
     int rID;
-
-    public Section() {
-        // Required empty public constructor
-    }
-    ImageView imageView;
     PhotoViewAttacher mAttacher;
 
     void setrID(int rID){

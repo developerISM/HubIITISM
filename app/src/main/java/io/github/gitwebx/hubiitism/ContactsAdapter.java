@@ -3,65 +3,45 @@ package io.github.gitwebx.hubiitism;
 /**
  * Created by Abhinav on 22-01-2017.
  */
+
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHolder>{
+public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.MyViewHolder> {
     private Context mContext;
-    private List<Album> albumList;
+    private List<Contact> contactList;
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, count;
-        public ImageView thumbnail, overflow;
-
-        public MyViewHolder(View view) {
-            super(view);
-            title = (TextView) view.findViewById(R.id.title);
-            count = (TextView) view.findViewById(R.id.count);
-            thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
-            //overflow = (ImageView) view.findViewById(R.id.overflow);
-        }
-    }
-
-
-    public AlbumsAdapter(Context mContext, List<Album> albumList) {
+    public ContactsAdapter(Context mContext, List<Contact> contactList) {
         this.mContext = mContext;
-        this.albumList = albumList;
+        this.contactList = contactList;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.album_card, parent, false);
+                .inflate(R.layout.item_contact, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Album album = albumList.get(position);
-        holder.title.setText(album.getName());
-        holder.count.setText("Contact:" + album.getNumOfSongs());
+        Contact contact = contactList.get(position);
+        holder.title.setText(contact.getName());
+        holder.count.setText("Contact:" + contact.getNumOfSongs());
 
-        // loading album cover using Glide library
-        Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
+        // loading contact cover using Glide library
+        Glide.with(mContext).load(contact.getThumbnail()).into(holder.thumbnail);
 
 //        holder.overflow.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -70,18 +50,6 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
 //            }
 //        });
     }
-
-    /**
-     * Showing popup menu when tapping on 3 dots
-     */
-//    private void showPopupMenu(View view) {
-//        // inflate menu
-//        PopupMenu popup = new PopupMenu(mContext, view);
-//        MenuInflater inflater = popup.getMenuInflater();
-//        inflater.inflate(R.menu.menu_album, popup.getMenu());
-//        popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
-//        popup.show();
-//    }
 
     /**
      * Click listener for popup menu items
@@ -108,12 +76,37 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
 
     @Override
     public int getItemCount() {
-        return albumList.size();
+        return contactList.size();
     }
-    public void setFilter(ArrayList<Album> newList)
+
+    /**
+     * Showing popup menu when tapping on 3 dots
+     */
+//    private void showPopupMenu(View view) {
+//        // inflate menu
+//        PopupMenu popup = new PopupMenu(mContext, view);
+//        MenuInflater inflater = popup.getMenuInflater();
+//        inflater.inflate(R.menu.menu_album, popup.getMenu());
+//        popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
+//        popup.show();
+//    }
+    public void setFilter(ArrayList<Contact> newList)
     {
-        albumList=new ArrayList<>();
-        albumList.addAll(newList);
+        contactList = new ArrayList<>();
+        contactList.addAll(newList);
         notifyDataSetChanged();
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView title, count;
+        public ImageView thumbnail, overflow;
+
+        public MyViewHolder(View view) {
+            super(view);
+            title = (TextView) view.findViewById(R.id.title);
+            count = (TextView) view.findViewById(R.id.count);
+            thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
+            //overflow = (ImageView) view.findViewById(R.id.overflow);
+        }
     }
 }

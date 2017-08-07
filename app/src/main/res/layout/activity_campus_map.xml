@@ -1,12 +1,10 @@
-<LinearLayout
-    xmlns:map="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@color/colorPrimary"
 
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -15,24 +13,24 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/TFaddress"
             android:layout_width="235dp"
             android:layout_height="match_parent"
-            android:inputType="textPersonName"
             android:background="@color/colorPrimary"
-            android:textColorHint="#ffff"
-            android:hint=" Where To?"
-            android:textColor="#ffff"
             android:ems="10"
-            android:id="@+id/TFaddress" />
+            android:hint=" Where To?"
+            android:inputType="textPersonName"
+            android:textColor="#ffff"
+            android:textColorHint="#ffff" />
 
         <Button
-            android:text="Search"
+            android:id="@+id/Bsearch"
             android:layout_width="133dp"
-            android:textColor="#ffff"
             android:layout_height="match_parent"
             android:background="@color/colorPrimary"
-            android:id="@+id/Bsearch"
-            android:onClick="onSearch" />
+            android:onClick="onSearch"
+            android:text="Search"
+            android:textColor="#ffff" />
 
     </LinearLayout>
 
@@ -42,44 +40,44 @@
         android:layout_width="match_parent"
         android:layout_height="534sp"
         android:background="@color/colorPrimary"
-        tools:context="io.github.gitwebx.hubiitism.Campus_Map" />
+        tools:context="io.github.gitwebx.hubiitism.CampusMapActivity" />
 
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:orientation="horizontal"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
 
         <Button
-            android:text="Map Type"
+            android:id="@+id/Btype"
             android:layout_width="180dp"
             android:layout_height="50dp"
             android:background="@color/colorPrimary"
 
-            android:textColor="#ffff"
-            android:id="@+id/Btype"
-            android:onClick="changeType" />
+            android:onClick="changeType"
+            android:text="Map Type"
+            android:textColor="#ffff" />
 
         <Button
-            android:text="+"
+            android:id="@+id/Bzoomin"
             android:layout_width="90dp"
             android:layout_height="50dp"
             android:background="@color/colorPrimary"
-            android:textColor="#ffff"
-            android:id="@+id/Bzoomin"
-            android:onClick="onZoom" />
+            android:onClick="onZoom"
+            android:text="+"
+            android:textColor="#ffff" />
 
         <Button
-            android:text="-"
-            android:textStyle="bold"
-            android:textSize="15dp"
-            android:textColor="#ffff"
-            android:layout_height="43dp"
             android:id="@+id/Bzoomout"
+            android:layout_width="98dp"
+            android:layout_height="43dp"
             android:background="@color/colorPrimary"
             android:onClick="onZoom"
-            android:layout_width="98dp" />
+            android:text="-"
+            android:textColor="#ffff"
+            android:textSize="15dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 <View

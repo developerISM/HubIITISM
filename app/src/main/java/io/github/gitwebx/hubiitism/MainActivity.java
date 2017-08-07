@@ -1,11 +1,13 @@
 package io.github.gitwebx.hubiitism;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,9 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Rect;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -28,7 +28,6 @@ import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private BoomMenuButton bmb;
     int arr[]={
             R.drawable.a,
             R.drawable.b,
@@ -51,16 +50,22 @@ public class MainActivity extends AppCompatActivity
             R.color.green3,
             R.color.white2
     };
+    private BoomMenuButton bmb;
     private boolean doubleBackToExitPressedOnce;
+    private final Runnable mRunnable = new Runnable() {
+        @Override
+        public void run() {
+            doubleBackToExitPressedOnce = false;
+        }
+    };
     private Handler mHandler = new Handler();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        dc contacts1=new dc();
+        TabSetter contacts1 = new TabSetter();
         FragmentManager manager=getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.content_main,contacts1).commit();
         setSupportActionBar(toolbar);
@@ -136,7 +141,7 @@ button1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onBoomButtonClick(int index) {
                             // When the boom-button corresponding this builder is clicked.
-                            Section a=new Section();
+                            SectionFragment a = new SectionFragment();
                             switch(index){
                                 case 0:
                                     a.setrID(R.drawable.seca);
@@ -275,12 +280,7 @@ button1.setOnClickListener(new View.OnClickListener() {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
-    private final Runnable mRunnable = new Runnable() {
-        @Override
-        public void run() {
-            doubleBackToExitPressedOnce = false;
-        }
-    };
+
     protected void onDestroy()
     {
         super.onDestroy();
@@ -324,7 +324,7 @@ button1.setOnClickListener(new View.OnClickListener() {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.aboutus) {
-            abtus contacts12=new abtus();
+            AboutUsFragment contacts12 = new AboutUsFragment();
             FragmentManager manager=getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.content_main,contacts12)
                     .addToBackStack(null)
@@ -358,7 +358,7 @@ button1.setOnClickListener(new View.OnClickListener() {
             // Handle the camera action
         }
         if (id == R.id.Dashboard) {
-            dc contacts1=new dc();
+            TabSetter contacts1 = new TabSetter();
             FragmentManager manager=getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.content_main,contacts1)
 
@@ -373,21 +373,16 @@ button1.setOnClickListener(new View.OnClickListener() {
 //
 //            ft.commit();
             // Handle the camera action
-        }
-        else if (id == R.id.Club) {
-            Intent intent=new Intent(MainActivity.this,ClubActivity.class);
-            startActivity(intent);
-
         } else if (id == R.id.Map) {
-            Intent intent=new Intent(MainActivity.this,Campus_Map.class);
+            Intent intent = new Intent(MainActivity.this, CampusMapActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.Contacts) {
-            Intent intent=new Intent(MainActivity.this,Contacts.class);
+            Intent intent = new Intent(MainActivity.this, ContactsActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.Admi) {
-            DashBoard contacts=new DashBoard();
+            DashBoardFragment contacts = new DashBoardFragment();
             FragmentManager manager=getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.content_main,contacts)
                     .addToBackStack(null).commit();

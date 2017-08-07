@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Abt extends Fragment {
+public class DashBoardFragment extends Fragment {
 
 
-    public Abt() {
+    public DashBoardFragment() {
         // Required empty public constructor
     }
 
@@ -23,7 +23,7 @@ public class Abt extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_abt, container, false);
+        return inflater.inflate(R.layout.fragment_dash_board, container, false);
     }
 
 }

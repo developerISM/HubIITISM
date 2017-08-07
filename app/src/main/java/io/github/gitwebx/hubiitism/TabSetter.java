@@ -12,10 +12,10 @@ import android.widget.TabHost;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class dc extends Fragment {
+public class TabSetter extends Fragment {
 
 
-    public dc() {
+    public TabSetter() {
         // Required empty public constructor
     }
 
@@ -29,7 +29,7 @@ public class dc extends Fragment {
         tabs.setup();
         TabHost.TabSpec spec=tabs.newTabSpec("tag1");
         spec.setContent(R.id.analog);
-        spec.setIndicator("About IIT(ISM)");
+           spec.setIndicator("AboutFragment IIT(ISM)");
         tabs.addTab(spec);
         spec=tabs.newTabSpec("tag2");
         spec.setContent(R.id.analo1g);
