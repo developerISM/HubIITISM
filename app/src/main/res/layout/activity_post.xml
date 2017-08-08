@@ -40,6 +40,15 @@
             android:paddingBottom="16dp"
             tools:text="Check out our new song! Lorem Ipsum jvs qwerty" />
 
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:textAlignment="textEnd"
+            tools:text="12 November, 1998\n12:35" />
+
+
         <ImageView
             android:id="@+id/iv_full_picture"
             android:layout_width="match_parent"

@@ -9,7 +9,10 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Created by Manan on 6/30/2017.
@@ -22,6 +25,27 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedAdapterVie
     FeedAdapter(ArrayList<FeedItem> feedItems, FeedItemClickListener feedItemClickListener) {
         this.feedItems = feedItems;
         this.feedItemClickListener = feedItemClickListener;
+    }
+
+    public static String getDate(String date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        TimeZone utcZone = TimeZone.getTimeZone("UTC");
+        sdf.setTimeZone(utcZone);
+
+        String dt;
+        Date t;
+        try {
+            t = sdf.parse(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        sdf = new SimpleDateFormat("MMMM' 'dd', 'yyyy'\n'HH:mm");
+        sdf.setTimeZone(TimeZone.getDefault());
+        dt = sdf.format(t);
+
+        return dt;
     }
 
     @Override
@@ -67,6 +91,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedAdapterVie
             TextView feedView = (TextView) itemView.findViewById(R.id.tv_post);
             ImageView imageView = (ImageView) itemView.findViewById(R.id.iv_full_picture);
             ImageView profileView = (ImageView) itemView.findViewById(R.id.civ_author_img);
+            TextView timeView = itemView.findViewById(R.id.tv_time);
 
             if (feedItem.getStory().equals("Can't fetch story")) {
                 authorView.setText(feedItem.getAuthor() + " made a post.");
@@ -86,6 +111,8 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedAdapterVie
                         .into(imageView);
                 imageView.setContentDescription(feedItem.getStory());
             }
+
+            timeView.setText(getDate(feedItem.getTime()));
 
             Picasso.with(itemView.getContext())
                     .load(feedItem.getProfilePic()).fit()

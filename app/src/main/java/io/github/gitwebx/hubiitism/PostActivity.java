@@ -18,6 +18,8 @@ import com.squareup.picasso.Target;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
+import static io.github.gitwebx.hubiitism.FeedAdapter.getDate;
+
 public class PostActivity extends AppCompatActivity {
     static FeedItem feedItem;
     PhotoViewAttacher mAttacher;
@@ -95,6 +97,9 @@ public class PostActivity extends AppCompatActivity {
             imageView.setContentDescription(feedItem.getStory());
             mAttacher = new PhotoViewAttacher(imageView);
         }
+
+        TextView timeView = (TextView) findViewById(R.id.tv_time);
+        timeView.setText(getDate(feedItem.getTime()));
 
         Picasso.with(this)
                 .load(feedItem.getProfilePic()).fit()
